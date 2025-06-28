@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv
+# *.wav
+# *.mp4
+# data/frames/
+# data/transcripts/

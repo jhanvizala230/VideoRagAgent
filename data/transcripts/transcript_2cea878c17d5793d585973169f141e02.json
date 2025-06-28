@@ -1,0 +1,517 @@
+[
+  {
+    "text": "In the previous video, you saw the logistic regression model.",
+    "start": 0.0,
+    "end": 4.64
+  },
+  {
+    "text": "To train the parameters W and B of your logistic regression model, you need to define a cost",
+    "start": 4.64,
+    "end": 9.88
+  },
+  {
+    "text": "function.",
+    "start": 9.88,
+    "end": 10.88
+  },
+  {
+    "text": "Let's take a look at the cost function you can use to train logistic regression.",
+    "start": 10.88,
+    "end": 14.52
+  },
+  {
+    "text": "To recap, this is what we had defined from the previous slide.",
+    "start": 14.52,
+    "end": 18.36
+  },
+  {
+    "text": "So your output Y hat is sigmoid of W transpose X plus B, where sigmoid of Z is as defined",
+    "start": 18.36,
+    "end": 24.36
+  },
+  {
+    "text": "here.",
+    "start": 24.36,
+    "end": 25.36
+  },
+  {
+    "text": "To learn parameters for your model, you're given a training set of M training examples",
+    "start": 25.36,
+    "end": 30.52
+  },
+  {
+    "text": "and it seems natural that you want to find parameters W and B, so that at least on the",
+    "start": 30.52,
+    "end": 35.72
+  },
+  {
+    "text": "training set, the outputs you have, the predictions you have on the training set, which is going",
+    "start": 35.72,
+    "end": 40.36
+  },
+  {
+    "text": "to write as Y hat I, that that would be close to the ground truth labels, Y I that you",
+    "start": 40.36,
+    "end": 46.04
+  },
+  {
+    "text": "got in the training set.",
+    "start": 46.04,
+    "end": 48.28
+  },
+  {
+    "text": "So to fill in a little bit more detail for the equation on top, we had said that Y hat",
+    "start": 48.28,
+    "end": 54.04
+  },
+  {
+    "text": "is as defined at the top for a training example X, and of course, for each training example,",
+    "start": 54.44,
+    "end": 61.04
+  },
+  {
+    "text": "we're using these super strips with round brackets with parentheses to index into different",
+    "start": 61.04,
+    "end": 66.28
+  },
+  {
+    "text": "training samples.",
+    "start": 66.28,
+    "end": 67.92
+  },
+  {
+    "text": "Your prediction on training example I, which is Y hat I, is going to be obtained by",
+    "start": 67.92,
+    "end": 74.4
+  },
+  {
+    "text": "taking the sigmoid function and applying it to W transpose X I, the input for the training",
+    "start": 74.4,
+    "end": 80.2
+  },
+  {
+    "text": "example plus B, and you can also define Z I as follows, where Z I is equal to W transpose",
+    "start": 80.2,
+    "end": 88.72
+  },
+  {
+    "text": "X I plus B.",
+    "start": 88.72,
+    "end": 90.32
+  },
+  {
+    "text": "So throughout this course, we're going to use this notational convention that the super",
+    "start": 90.32,
+    "end": 95.16
+  },
+  {
+    "text": "strip parentheses I refers to data, be it X or Y or Z or something else associated with",
+    "start": 95.16,
+    "end": 105.16
+  },
+  {
+    "text": "the I, training example associated with the I, example, okay, that's what the super",
+    "start": 105.16,
+    "end": 111.8
+  },
+  {
+    "text": "script I in parentheses means.",
+    "start": 111.8,
+    "end": 114.96
+  },
+  {
+    "text": "Now let's see what loss function or an error function we can use to measure how well our",
+    "start": 114.96,
+    "end": 120.24
+  },
+  {
+    "text": "algorithm is doing.",
+    "start": 120.24,
+    "end": 121.48
+  },
+  {
+    "text": "One thing you could do is define the loss when your algorithm outputs Y hat and the true",
+    "start": 121.48,
+    "end": 127.72
+  },
+  {
+    "text": "labels Y to be maybe the squared error or one half a squared error.",
+    "start": 127.72,
+    "end": 132.44
+  },
+  {
+    "text": "It turns out that you could do this, but in logistic regression people don't usually",
+    "start": 132.44,
+    "end": 137.4
+  },
+  {
+    "text": "do this because when you come to learn the parameters, you find that the optimization",
+    "start": 137.4,
+    "end": 142.56
+  },
+  {
+    "text": "problem, which we'll talk about later, becomes non-convex.",
+    "start": 142.56,
+    "end": 145.8
+  },
+  {
+    "text": "So you end up with optimization problem with multiple local optimal.",
+    "start": 145.8,
+    "end": 150.32
+  },
+  {
+    "text": "So gradient descent may not find the global optimum.",
+    "start": 150.32,
+    "end": 153.56
+  },
+  {
+    "text": "If you didn't understand the last couple of comments, don't worry about it, we'll get",
+    "start": 153.56,
+    "end": 156.72
+  },
+  {
+    "text": "to it in a later video.",
+    "start": 156.72,
+    "end": 158.52
+  },
+  {
+    "text": "But the intuition to take away is that this function L called the loss function is a function",
+    "start": 158.52,
+    "end": 164.4
+  },
+  {
+    "text": "we'll need to define to measure how good our output Y hat is when the true label is",
+    "start": 164.4,
+    "end": 170.8
+  },
+  {
+    "text": "Y.",
+    "start": 170.8,
+    "end": 171.8
+  },
+  {
+    "text": "And squared error seems like it might be a reasonable choice, except that it makes gradient descent",
+    "start": 171.8,
+    "end": 176.92
+  },
+  {
+    "text": "not work well.",
+    "start": 176.92,
+    "end": 178.28
+  },
+  {
+    "text": "So in logistic regression, we'll actually define a different loss function that plays",
+    "start": 178.28,
+    "end": 183.12
+  },
+  {
+    "text": "a similar role as squared error that will give us an optimization problem that is convex.",
+    "start": 183.12,
+    "end": 189.56
+  },
+  {
+    "text": "And so we'll see in a later video, it becomes much easier to optimize.",
+    "start": 189.56,
+    "end": 193.92
+  },
+  {
+    "text": "So what we use in logistic regression is actually the following loss function, which I'm just",
+    "start": 193.92,
+    "end": 200.56
+  },
+  {
+    "text": "going to write out here, is negative Y log Y hat plus 1 minus Y log 1 minus Y hat.",
+    "start": 200.56,
+    "end": 215.4
+  },
+  {
+    "text": "Here's some intuition for why this loss function makes sense.",
+    "start": 215.4,
+    "end": 218.96
+  },
+  {
+    "text": "Keep in mind that if we're using squared error, then you want this squared error to be",
+    "start": 218.96,
+    "end": 224.52
+  },
+  {
+    "text": "as small as possible.",
+    "start": 224.52,
+    "end": 226.04
+  },
+  {
+    "text": "And with this logistic regression loss function will also want this to be as small as possible.",
+    "start": 226.04,
+    "end": 231.64
+  },
+  {
+    "text": "To understand why this makes sense, let's look at the two cases.",
+    "start": 231.64,
+    "end": 235.48
+  },
+  {
+    "text": "In the first case, let's say Y is equal to 1, then the loss function Y hat comma Y is",
+    "start": 235.48,
+    "end": 243.2
+  },
+  {
+    "text": "just this first term, right, and this negative sign.",
+    "start": 243.2,
+    "end": 245.52
+  },
+  {
+    "text": "So it's negative log Y hat if Y is equal to 1, because if Y equals 1, then the second term",
+    "start": 245.52,
+    "end": 251.92
+  },
+  {
+    "text": "1 minus Y is equal to 0.",
+    "start": 251.92,
+    "end": 254.24
+  },
+  {
+    "text": "So this is, if Y equals 1, you want negative log Y hat to be as small as possible.",
+    "start": 254.24,
+    "end": 260.44
+  },
+  {
+    "text": "So that means you want log Y hat to be large, to be as big as possible.",
+    "start": 260.44,
+    "end": 269.08
+  },
+  {
+    "text": "And that means you want Y hat to be large.",
+    "start": 269.08,
+    "end": 273.56
+  },
+  {
+    "text": "But because Y hat is the sigma function, it can never be bigger than 1.",
+    "start": 273.56,
+    "end": 279.08
+  },
+  {
+    "text": "So just saying that if Y is equal to 1, you want Y hat to be as big as possible, but",
+    "start": 279.08,
+    "end": 284.64
+  },
+  {
+    "text": "it can't ever be bigger than 1.",
+    "start": 284.64,
+    "end": 286.04
+  },
+  {
+    "text": "So saying you want Y hat to be close to 1 as well.",
+    "start": 286.04,
+    "end": 288.76
+  },
+  {
+    "text": "The other case is if Y equals 0, if Y equals 0, then this first term in the loss function",
+    "start": 288.76,
+    "end": 294.4
+  },
+  {
+    "text": "is equal to 0, because Y, you know, 0.",
+    "start": 294.4,
+    "end": 297.6
+  },
+  {
+    "text": "And then the second term defines the loss function.",
+    "start": 297.6,
+    "end": 301.88
+  },
+  {
+    "text": "So the loss becomes negative log 1 minus Y hat.",
+    "start": 301.88,
+    "end": 307.8
+  },
+  {
+    "text": "And so if in your learning procedure, you try to make the loss function small, what",
+    "start": 307.8,
+    "end": 312.12
+  },
+  {
+    "text": "this means is that you want log 1 minus Y hat to be large because it's a negative sign",
+    "start": 312.12,
+    "end": 321.96
+  },
+  {
+    "text": "there.",
+    "start": 321.96,
+    "end": 322.96
+  },
+  {
+    "text": "And then through a similar piece of reasoning, you can conclude that this loss function",
+    "start": 322.96,
+    "end": 326.92
+  },
+  {
+    "text": "is trying to make Y hat as small as possible.",
+    "start": 326.92,
+    "end": 331.44
+  },
+  {
+    "text": "And again, because Y hat has to be between 0 and 1, does it say that if Y is equal to 0,",
+    "start": 331.44,
+    "end": 337.56
+  },
+  {
+    "text": "then your loss function will push the parameters to make Y hat as close to 0 as possible.",
+    "start": 338.04,
+    "end": 344.32
+  },
+  {
+    "text": "Now, there are a lot of functions with roughly this effect that if Y is equal to 1,",
+    "start": 344.32,
+    "end": 349.28
+  },
+  {
+    "text": "you're trying to make Y hat large and Y is equal to 0, you're trying to make Y hat small.",
+    "start": 349.28,
+    "end": 353.44
+  },
+  {
+    "text": "We just gave here in green a somewhat informal justification for this particular loss function.",
+    "start": 353.44,
+    "end": 359.76
+  },
+  {
+    "text": "We'll provide an optional video later to give a more formal justification for why in",
+    "start": 359.76,
+    "end": 365.0
+  },
+  {
+    "text": "which is regression, we like to use the loss function with this particular form.",
+    "start": 365.0,
+    "end": 368.92
+  },
+  {
+    "text": "Finally, the loss function was defined with respect to a single training example.",
+    "start": 368.92,
+    "end": 374.08
+  },
+  {
+    "text": "It measures how well you're doing on a single training example.",
+    "start": 374.08,
+    "end": 377.2
+  },
+  {
+    "text": "I'm now going to define something called the cost function, which measures how",
+    "start": 377.2,
+    "end": 383.08
+  },
+  {
+    "text": "well you're doing on the entire training set.",
+    "start": 383.08,
+    "end": 385.16
+  },
+  {
+    "text": "So the cost function, j, which is applied to your parameters W and B, is going to be the",
+    "start": 385.16,
+    "end": 392.28
+  },
+  {
+    "text": "average, really.",
+    "start": 392.28,
+    "end": 393.24
+  },
+  {
+    "text": "1 over M of the sum of the loss function applied to each of the training examples in turn.",
+    "start": 393.24,
+    "end": 404.16
+  },
+  {
+    "text": "We're here, Y hat is of course the prediction output by your logistic regression algorithm",
+    "start": 404.16,
+    "end": 409.16
+  },
+  {
+    "text": "using a particular set of parameters W and B.",
+    "start": 409.16,
+    "end": 413.24
+  },
+  {
+    "text": "And so just to expand this out, this is equal to negative 1 over M sum from I equals 1 through",
+    "start": 413.24,
+    "end": 420.88
+  },
+  {
+    "text": "M of the definition of the loss function above.",
+    "start": 420.88,
+    "end": 424.04
+  },
+  {
+    "text": "So this is Y i log Y hat i plus 1 minus Y i log 1 minus Y hat i.",
+    "start": 424.04,
+    "end": 436.56
+  },
+  {
+    "text": "I guess it can put square brackets here.",
+    "start": 436.56,
+    "end": 438.4
+  },
+  {
+    "text": "So the minus sign is outside everything else.",
+    "start": 438.4,
+    "end": 441.56
+  },
+  {
+    "text": "So the terminology I'm going to use is that the loss function is applied to just a single",
+    "start": 441.56,
+    "end": 447.08
+  },
+  {
+    "text": "training example like so.",
+    "start": 447.08,
+    "end": 449.72
+  },
+  {
+    "text": "And the cost function is the cost of your parameters.",
+    "start": 449.72,
+    "end": 453.6
+  },
+  {
+    "text": "So in training your logistic regression model, we're going to try to find parameters W and",
+    "start": 453.6,
+    "end": 458.96
+  },
+  {
+    "text": "B that minimize the overall cost function, j written at the bottom.",
+    "start": 458.96,
+    "end": 464.08
+  },
+  {
+    "text": "So you've just seen the setup for the logistic regression algorithm, the loss function for",
+    "start": 464.08,
+    "end": 469.76
+  },
+  {
+    "text": "a training example, and the overall cost function for the parameters of your algorithm.",
+    "start": 469.76,
+    "end": 474.68
+  },
+  {
+    "text": "It turns out that logistic regression can be viewed as a very, very small neural network.",
+    "start": 474.68,
+    "end": 480.12
+  },
+  {
+    "text": "In the next video we'll go over that so you can start gaining intuition about what neural",
+    "start": 480.12,
+    "end": 484.16
+  },
+  {
+    "text": "networks do.",
+    "start": 484.16,
+    "end": 485.6
+  },
+  {
+    "text": "So that let's go on to the next video about how to view logistic regression as a very small",
+    "start": 485.6,
+    "end": 491.2
+  },
+  {
+    "text": "neural network.",
+    "start": 491.2,
+    "end": 491.96
+  }
+]

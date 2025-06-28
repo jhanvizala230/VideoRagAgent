@@ -1,0 +1,152 @@
+[
+  {
+    "text": "We probably say that the computations of a neural network are organized in terms of a",
+    "start": 0.0,
+    "end": 4.96
+  },
+  {
+    "text": "forward pass or a forward propagation step in which we compute the output of the neural network",
+    "start": 4.96,
+    "end": 10.16
+  },
+  {
+    "text": "followed by a backward pass or a back propagation step which we use to compute gradients or compute",
+    "start": 10.16,
+    "end": 15.68
+  },
+  {
+    "text": "derivatives. The computation graph explains why it is organized this way. In this video,",
+    "start": 15.68,
+    "end": 22.24
+  },
+  {
+    "text": "we'll go through an example. In order to illustrate the computation graph, let's use a",
+    "start": 22.24,
+    "end": 29.12
+  },
+  {
+    "text": "simpler example than logistic regression or a full-blown neural network. Let's say that we're",
+    "start": 29.12,
+    "end": 35.12
+  },
+  {
+    "text": "trying to compute a function j which is a function of three variables A, B, and C. And let's say",
+    "start": 35.12,
+    "end": 41.2
+  },
+  {
+    "text": "that function is three times A plus B times C. Computing this function actually has three distinct",
+    "start": 41.2,
+    "end": 48.4
+  },
+  {
+    "text": "steps. The first is you need to compute what is B times C. Let's say we store that in a variable",
+    "start": 48.4,
+    "end": 54.32
+  },
+  {
+    "text": "called U. So U is equal to B times C. And then you might compute V with equal A times U. So let's say",
+    "start": 54.32,
+    "end": 62.08
+  },
+  {
+    "text": "this is V. And then finally, your output j is three times V. So this is your final function j",
+    "start": 62.96,
+    "end": 73.52
+  },
+  {
+    "text": "that you're trying to compute. We can take these three steps and draw them in a computation graph",
+    "start": 73.52,
+    "end": 79.68
+  },
+  {
+    "text": "as follows. Let's say I draw your three variables A, B, and C here. So the first thing we did",
+    "start": 79.68,
+    "end": 87.6
+  },
+  {
+    "text": "was compute U equals B times C. So I'm going to put a rectangular box around that and",
+    "start": 87.6,
+    "end": 95.36
+  },
+  {
+    "text": "so the inputs to that are B and C. And then you might have V equals A plus U. So the inputs to that",
+    "start": 95.36,
+    "end": 106.64
+  },
+  {
+    "text": "are V. So the inputs to that are U which we just computed together with A. And then finally we have J equals",
+    "start": 107.12,
+    "end": 120.16
+  },
+  {
+    "text": "three times V. So as a concrete example, if A equals five, B equals three, and C equals two,",
+    "start": 120.16,
+    "end": 131.04
+  },
+  {
+    "text": "then U equals B C would be six. V equals A plus U would be five plus six eleven. J is three times",
+    "start": 131.04,
+    "end": 138.64
+  },
+  {
+    "text": "that. So J is equal to 33. And indeed, hopefully you can verify that this is three times five",
+    "start": 138.64,
+    "end": 146.8
+  },
+  {
+    "text": "plus three times two. And if you expand that out, you actually get 33 as the value of J.",
+    "start": 146.8,
+    "end": 153.92
+  },
+  {
+    "text": "So the computation graph comes in handy when there is some distinguish or some special",
+    "start": 154.64,
+    "end": 160.72
+  },
+  {
+    "text": "output variable, such as J in this case, that you want to optimize. And in the case of a logistic",
+    "start": 160.72,
+    "end": 167.68
+  },
+  {
+    "text": "regression, J is of course the cost function that we're trying to minimize. And what we'll see",
+    "start": 167.68,
+    "end": 174.24
+  },
+  {
+    "text": "in this little example is that through a left to right pass, you can compute the value of J.",
+    "start": 174.24,
+    "end": 180.96
+  },
+  {
+    "text": "And what we'll see in the next couple of slides is that in order to compute derivatives,",
+    "start": 180.96,
+    "end": 186.0
+  },
+  {
+    "text": "OPA right to left pass like this, kind of going in the opposite direction as the blue arrows",
+    "start": 186.08,
+    "end": 193.28
+  },
+  {
+    "text": "that would be most natural for computing the derivatives. So the recap, the computation graph",
+    "start": 194.32,
+    "end": 199.28
+  },
+  {
+    "text": "organizes the computation with this blue arrow left to right computation. Let's defer to the",
+    "start": 199.28,
+    "end": 205.04
+  },
+  {
+    "text": "next video how you can do the backward red arrow right to left computation of the derivatives.",
+    "start": 205.04,
+    "end": 211.6
+  },
+  {
+    "text": "Let's go on to the next video.",
+    "start": 211.6,
+    "end": 218.8
+  }
+]
