@@ -22,19 +22,21 @@ Built with:
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ Output 
 
 ### 📌 Streamlit Upload Interface
-<!-- Upload your screenshot here -->
-![Upload Screen](screenshots/upload_interface.png)
+This is the home page interface.
+![Home Page](screenshots/home_page.png)
 
 ### 📌 Processed Output Example
-<!-- Upload your screenshot here -->
-![Processed Output](screenshots/processed_output.png)
+The screen presents the uploaded video, accompanied by a 'Run pipeline' button that, when activated, processes the video to derive its comprehensive details.
+
+![Process Video](screenshots/processed_output_video.png)
 
 ### 📌 Q&A Result with Timestamps
+Once the video is saved and processed, the system provides answers to user queries, including the specific video segments where the explanations are found
 <!-- Upload your screenshot here -->
-![QA Result](screenshots/qa_result.png)
+![User Q&A Result](screenshots/timestamps_reflected.png)
 
 ---
 
